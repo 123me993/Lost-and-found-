@@ -6,19 +6,38 @@
 </head>
 <body>
 
-<h1>Add Lost Item</h1>
+<div class="form-wrapper">
+  <h2>Report a Lost Item</h2>
 
-<form id="addForm">
-  <input id="itemName" placeholder="Item name" required>
-  <input id="location" placeholder="Location found" required>
-  <input id="category" placeholder="Category" required>
-  <textarea id="desc" placeholder="Description"></textarea>
-  <input type="file" id="image" required>
+  <form id="addForm">
 
-  <button type="submit">Add Item</button>
-</form>
+    <label>Item Name</label>
+    <input type="text" id="itemName" required>
 
-<a href="index.html" class="link">⬅ Back</a>
+    <label>Category</label>
+    <select id="category" required>
+      <option value="">Select category</option>
+      <option value="Phone">Phone</option>
+      <option value="Bag">Bag</option>
+      <option value="Document">Document</option>
+      <option value="Money">Money</option>
+      <option value="Others">Others</option>
+    </select>
+
+    <label>Location Found</label>
+    <input type="text" id="location" required>
+
+    <label>Description</label>
+    <textarea id="desc"></textarea>
+
+    <label>Upload Image (inf.kb-1mb)</label>
+    <input type="file" id="image" accept="image/*" required>
+
+    <button type="submit">Submit Item</button>
+  </form>
+
+  <a href="index.html" class="link back">⬅ Back</a>
+</div>
 
 <script src="add.js"></script>
 </body>
