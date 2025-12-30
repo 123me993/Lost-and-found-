@@ -1,30 +1,24 @@
-alert("add.js loaded");
-
 const API = "https://lost-found-backend-1vba.onrender.com/items";
 
 document.getElementById("addForm").addEventListener("submit", async e => {
   e.preventDefault();
-  alert("Form submitted");
 
   const file = document.getElementById("image").files[0];
 
   if (!file) {
-    alert("No image selected");
+    alert("Please select an image");
     return;
   }
-
-  alert("Image selected");
 
   const reader = new FileReader();
 
   reader.onload = async () => {
-    alert("Image converted");
 
     const data = {
-      name: itemName.value,
-      location: location.value,
-      category: category.value,
-      desc: desc.value,
+      name: document.getElementById("itemName").value.trim(),
+      location: document.getElementById("location").value.trim(),
+      category: document.getElementById("category").value,
+      desc: document.getElementById("desc").value.trim(),
       image: reader.result
     };
 
@@ -35,18 +29,18 @@ document.getElementById("addForm").addEventListener("submit", async e => {
         body: JSON.stringify(data)
       });
 
-      alert("Request sent");
+      const text = await res.text(); // 👈 SEE SERVER MESSAGE
 
       if (!res.ok) {
-        alert("Server rejected request");
+        alert("Server error: " + text);
         return;
       }
 
-      alert("SUCCESS: Item added");
+      alert("Item added successfully!");
       window.location.href = "index.html";
 
     } catch (err) {
-      alert("NETWORK ERROR");
+      alert("Network error");
       console.error(err);
     }
   };
